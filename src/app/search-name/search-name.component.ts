@@ -34,7 +34,9 @@ export class SearchNameComponent implements OnInit, OnDestroy {
   public onSearchChange(): void {
     if(!this.nameFormControl.hasError('required')) {
       this.nameDataSubscription = this.agifyApiService.getNameData(this.nameFormControl.value).subscribe((response: NameData) => {
-        this.nameResult = [response];
+        if(this.nameFormControl.value) {
+          this.nameResult = [response];
+        }
       });
     } else {
       this.nameResult = [];

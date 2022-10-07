@@ -10,7 +10,7 @@
 
 <ng-container *ngIf="nameResult && nameResult.length > 0">
     <div class="d-flex justify-content-center">
-        <ng-container *ngIf="nameResult[0].age && nameResult[0].count && nameResult[0].name && nameFormControl.value !== ''; else noResults">
+        <ng-container *ngIf="nameResult[0].age && nameResult[0].count && nameResult[0].name; else noResults">
                 <table mat-table [dataSource]="nameResult" class="mat-elevation-z8 data-table">
                     <ng-container matColumnDef="age">
                         <th mat-header-cell *matHeaderCellDef> Age </th>
