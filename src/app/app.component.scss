@@ -1,0 +1,15 @@
+.searcher {
+    margin-top: 10em;
+
+    &__header {
+        &--title {
+            text-align: center;
+            text-decoration: underline;
+            font-size: 2em;
+        }
+    }
+
+    &__search {
+        margin-top: 3em;
+    }
+}

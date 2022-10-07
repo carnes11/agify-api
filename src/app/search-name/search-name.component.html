@@ -1,0 +1,39 @@
+<div class="d-flex align-items-center justify-content-center">
+    <mat-form-field class="name-form-field" appearance="fill">
+        <mat-label>Type name</mat-label>
+        <input type="text" matInput [formControl]="nameFormControl" placeholder="Ex. Łukasz" (input)="onSearchChange()">
+        <mat-error *ngIf="nameFormControl.hasError('required')">
+            Name is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+</div>
+
+<ng-container *ngIf="nameResult && nameResult.length > 0">
+    <div class="d-flex justify-content-center">
+        <ng-container *ngIf="nameResult[0].age && nameResult[0].count && nameResult[0].name && nameFormControl.value !== ''; else noResults">
+                <table mat-table [dataSource]="nameResult" class="mat-elevation-z8 data-table">
+                    <ng-container matColumnDef="age">
+                        <th mat-header-cell *matHeaderCellDef> Age </th>
+                        <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="count">
+                        <th mat-header-cell *matHeaderCellDef> Count </th>
+                        <td mat-cell *matCellDef="let element"> {{element.count}} </td>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef> Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                    </ng-container>
+                    
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+        </ng-container>
+
+        <ng-template #noResults>
+            No results for this name.
+        </ng-template>
+    </div>
+</ng-container>
